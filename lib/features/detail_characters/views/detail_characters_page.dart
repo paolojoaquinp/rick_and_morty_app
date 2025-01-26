@@ -60,20 +60,27 @@ class _DetailCharactersPageState extends State<DetailCharactersPage> {
                     spreadRadius: -15,
                     offset: Offset(35, 35))
               ]),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(
-                    40,
-                  ),
-                ),
-                child: Hero(
-                  tag: widget.character.id,
-                  child: Image.network(
-                    widget.character.image,
-                    width: MediaQuery.sizeOf(context).width * 0.8,
-                    height: MediaQuery.sizeOf(context).width * 0.8,
-                  ),
-                ),
+              child: TweenAnimationBuilder<double>(
+                curve: Curves.easeInQuart,
+                duration: const Duration(milliseconds: 1500),
+                tween: Tween<double>(begin: 0, end: 40.0),
+                builder: (context, value, child) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(
+                        value,
+                      ),
+                    ),
+                    child: Hero(
+                      tag: widget.character.id,
+                      child: Image.network(
+                        widget.character.image,
+                        width: MediaQuery.sizeOf(context).width * 0.8,
+                        height: MediaQuery.sizeOf(context).width * 0.8,
+                      ),
+                    ),
+                  );
+                }
               ),
             ),
             const Spacer(),
