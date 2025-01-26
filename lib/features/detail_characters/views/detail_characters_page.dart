@@ -39,6 +39,9 @@ class _DetailCharactersPageState extends State<DetailCharactersPage> {
     return Scaffold(
       backgroundColor: itemBackgroundColor,
       appBar: AppBar(
+        leading: const BackButton(
+          color: Colors.white,
+        ),
         backgroundColor: Colors.transparent,
       ),
       body: Container(
@@ -58,7 +61,11 @@ class _DetailCharactersPageState extends State<DetailCharactersPage> {
                     offset: Offset(35, 35))
               ]),
               child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(40)),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(
+                    40,
+                  ),
+                ),
                 child: Hero(
                   tag: widget.character.id,
                   child: Image.network(
