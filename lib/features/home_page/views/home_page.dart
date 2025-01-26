@@ -62,20 +62,18 @@ class _Body extends StatelessWidget {
                 }
                 if (state is CharactersLoaded) {
                   final query = context.watch<SearchInputCubit>().state;
-                  final filteredList = state.characters
-                      .where((character) {
-                        final nameMatch = character.name
-                            .toLowerCase()
-                            .contains(query.toLowerCase());
-                        final statusMatch = character.status
-                            .toLowerCase()
-                            .contains(query.toLowerCase());
-                        final speciesMatch = character.species
-                            .toLowerCase()
-                            .contains(query.toLowerCase());
-                        return nameMatch || statusMatch || speciesMatch;
-                      })
-                      .toList();
+                  final filteredList = state.characters.where((character) {
+                    final nameMatch = character.name
+                        .toLowerCase()
+                        .contains(query.toLowerCase());
+                    final statusMatch = character.status
+                        .toLowerCase()
+                        .contains(query.toLowerCase());
+                    final speciesMatch = character.species
+                        .toLowerCase()
+                        .contains(query.toLowerCase());
+                    return nameMatch || statusMatch || speciesMatch;
+                  }).toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.vertical,
@@ -87,11 +85,28 @@ class _Body extends StatelessWidget {
                         child: CharacterCard(
                           character: character,
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => DetailCharactersPage(
-                                character: character,
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                transitionDuration:
+                                    const Duration(milliseconds: 1200),
+                                reverseTransitionDuration:
+                                    const Duration(milliseconds: 1200),
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) {
+                                  return DetailCharactersPage(
+                                    character: character,
+                                  );
+                                },
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  );
+                                },
                               ),
-                            ));
+                            );
                           },
                         ),
                       );

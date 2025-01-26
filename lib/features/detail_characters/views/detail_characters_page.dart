@@ -59,10 +59,13 @@ class _DetailCharactersPageState extends State<DetailCharactersPage> {
               ]),
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(40)),
-                child: Image.network(
-                  widget.character.image,
-                  width: MediaQuery.sizeOf(context).width * 0.8,
-                  height: MediaQuery.sizeOf(context).width * 0.8,
+                child: Hero(
+                  tag: widget.character.id,
+                  child: Image.network(
+                    widget.character.image,
+                    width: MediaQuery.sizeOf(context).width * 0.8,
+                    height: MediaQuery.sizeOf(context).width * 0.8,
+                  ),
                 ),
               ),
             ),
