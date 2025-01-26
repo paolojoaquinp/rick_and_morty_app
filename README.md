@@ -22,7 +22,7 @@ Home Page and Detail Page
 Clone the project
 
 ```bash
-  git clone https://github.com/paolojoaquinp/rick_and_morty_app
+  git clone git@github.com:paolojoaquinp/rick_and_morty_app.git
 ```
 
 Go to the project directory
