@@ -29,7 +29,8 @@ class _DetailCharactersPageState extends State<DetailCharactersPage> {
       NetworkImage(widget.character.image),
     );
     setState(() {
-      itemBackgroundColor = paletteGenerator.dominantColor?.color ?? Colors.yellow;
+      itemBackgroundColor =
+          paletteGenerator.dominantColor?.color ?? Colors.yellow;
     });
   }
 
@@ -40,47 +41,102 @@ class _DetailCharactersPageState extends State<DetailCharactersPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      body: Center(
+      body: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.sizeOf(context).width * 0.05),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.network(
-              widget.character.image,
-              width: 128,
-              height: 128,
-            ),
-            const SizedBox(height: 16.0),
-            const Text(
-              'Statue | Rick & Morty',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
+            DecoratedBox(
+              decoration: const BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.black54,
+                    blurRadius: 40,
+                    spreadRadius: -15,
+                    offset: Offset(35, 35))
+              ]),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(40)),
+                child: Image.network(
+                  widget.character.image,
+                  width: MediaQuery.sizeOf(context).width * 0.8,
+                  height: MediaQuery.sizeOf(context).width * 0.8,
+                ),
               ),
             ),
-            const SizedBox(height: 8.0),
-            const Text(
-              'In-stock!',
-              style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.grey,
-              ),
+            const Spacer(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Text(
+                      'Species | ',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      widget.character.species,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+                Text(
+                  widget.character.name,
+                  style: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: 8), // Espaciado
+                Row(
+                  children: [
+                    const Text(
+                      'Origin',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      ' | ${widget.character.origin.name}',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8), // Espaciado
+                Text(
+                  'Location | ${widget.character.location.name}',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
-            const SizedBox(height: 16.0),
-            const Text(
-              'Rick & Morty\nMorty',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            const Text(
-              '\$2.250',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * 0.1,
             ),
           ],
         ),
