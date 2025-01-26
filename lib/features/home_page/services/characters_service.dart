@@ -45,19 +45,4 @@ class CharacterService {
       return Result.err(Error('Something Is wrong'));
     }
   }
-
-  // Future<Map<String, dynamic>> fetchCharacterById(int id) async {
-  //   try {
-  //     final response =
-  //         await _dio.get('https://rickandmortyapi.com/api/character/$id');
-
-  //     if (response.statusCode == 200) {
-  //       return response.data as Map<String, dynamic>;
-  //     } else {
-  //       throw Exception('Error on Getting character: ${response.statusCode}');
-  //     }
-  //   } catch (e) {
-  //     throw Exception('Erro on API connection: $e');
-  //   }
-  // }
 }
