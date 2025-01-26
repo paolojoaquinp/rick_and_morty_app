@@ -39,6 +39,7 @@ dependencies:
   equatable: ^2.0.7
   dio: ^5.7.0
   oxidized: ^6.2.0
+  palette_generator: ^0.3.3+5
 
 dev_dependencies:
   flutter_test:
