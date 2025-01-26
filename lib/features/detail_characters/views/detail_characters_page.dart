@@ -118,7 +118,7 @@ class _DetailCharactersPageState extends State<DetailCharactersPage> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 8), // Espaciado
+                const SizedBox(height: 8), // Espaciado
                 Row(
                   children: [
                     const Text(
