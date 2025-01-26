@@ -39,6 +39,14 @@ class _Body extends StatelessWidget {
           const SizedBox(
             height: kToolbarHeight,
           ),
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.2,
+            child: Image.asset(
+              'assets/rick-and-morty-logo.png',
+              fit: BoxFit.fitHeight,
+              scale: 0.5,
+            ),
+          ),
           SearchInput(onChanged: (newValue) {
             context.read<SearchInputCubit>().setNewValue(newValue);
           }),
