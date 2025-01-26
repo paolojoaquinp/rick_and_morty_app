@@ -12,7 +12,7 @@ class SearchInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return SearchBar(
       controller: TextEditingController(),
-      hintText: 'Type yout favorite character name...',
+      hintText: 'Search by character name...',
       onChanged: onChanged,
     );
   }

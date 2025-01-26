@@ -48,6 +48,8 @@ class CharacterCard extends StatelessWidget {
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.bold,
                               ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
